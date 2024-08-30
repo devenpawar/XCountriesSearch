@@ -11,9 +11,7 @@ function App() {
 
   const fetchWeather = async () => {
     try {
-      const response = await axios.get(
-        "https://xcountries-backend.azurewebsites.net/all"
-      );
+      const response = await axios.get("https://restcountries.com/v3.1/all");
       setData(response.data);
       setFilteredData(response.data); // Initially set the filtered data to be the same as the full data
       setLoading(false);
@@ -27,7 +25,7 @@ function App() {
   const fetchSelectedCountry = (e) => {
     const selectedCountry = e.target.value.toLowerCase();
     const filteredCountries = data.filter((country) =>
-      country.name.toLowerCase().includes(selectedCountry)
+      country.name.common.toLowerCase().includes(selectedCountry)
     );
     setFilteredData(filteredCountries);
   };
@@ -57,7 +55,7 @@ function App() {
               md={4}
               lg={2}
               xl={1.5}
-              key={item.id}
+              key={item.cca3}
               style={{
                 border: "0.5px solid black",
                 padding: "1rem",
@@ -66,11 +64,13 @@ function App() {
               }}
             >
               <img
-                src={item.flag}
-                alt={`Flag of ${item.name}`}
+                src={item.flags.png}
+                alt={`Flag of ${item.name.common}`}
                 style={{ height: "100px", width: "100px", objectFit: "cover" }}
               />
-              <p style={{ margin: "8px 0", fontWeight: "bold" }}>{item.name}</p>
+              <p style={{ margin: "8px 0", fontWeight: "bold" }}>
+                {item.name.common}
+              </p>
             </Grid>
           ))}
       </Grid>
