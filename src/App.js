@@ -63,14 +63,20 @@ function App() {
                 textAlign: "center",
               }}
             >
-              <img
-                src={item.flags.png}
-                alt={`Flag of ${item.name.common}`}
-                style={{ height: "100px", width: "100px", objectFit: "cover" }}
-              />
-              <p style={{ margin: "8px 0", fontWeight: "bold" }}>
-                {item.name.common}
-              </p>
+              <div className="countryCard">
+                <img
+                  src={item.flags.png}
+                  alt={`Flag of ${item.name.common}`}
+                  style={{
+                    height: "100px",
+                    width: "100px",
+                    objectFit: "cover",
+                  }}
+                />
+                <p style={{ margin: "8px 0", fontWeight: "bold" }}>
+                  {item.name.common}
+                </p>
+              </div>
             </Grid>
           ))}
       </Grid>
